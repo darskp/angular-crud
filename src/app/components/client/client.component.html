@@ -56,27 +56,27 @@
                 <div class="row">
                     <div class="col-6">
                         <label for="">Person Name</label>
-                        <input name="contactPersonName" [(ngModel)]="clientObj.contactPersonName" type="text" class="form-control" />
+                        <input name="contactPersonName" required [(ngModel)]="clientObj.contactPersonName" type="text" class="form-control" />
                     </div>
                     <div class="col-6">
                         <label for="">Company Name</label>
-                        <input name="companyName" [(ngModel)]="clientObj.companyName" type="text" class="form-control" />
+                        <input name="companyName"  required [(ngModel)]="clientObj.companyName" type="text" class="form-control" />
                     </div>
                     <div class="col-6">
                         <label for="">Address</label>
-                        <input name="address" [(ngModel)]="clientObj.address" type="text" class="form-control" />
+                        <input name="address" required [(ngModel)]="clientObj.address" type="text" class="form-control" />
                     </div>
                     <div class="col-6">
                         <label for="">City</label>
-                        <input name="city" [(ngModel)]="clientObj.city" type="text" class="form-control" />
+                        <input name="city" required [(ngModel)]="clientObj.city" type="text" class="form-control" />
                     </div>
                     <div class="col-6">
                         <label for="">Pincode</label>
-                        <input name="pincode" [(ngModel)]="clientObj.pincode" type="text" class="form-control" />
+                        <input name="pincode" required [(ngModel)]="clientObj.pincode" type="text" class="form-control" />
                     </div>
                     <div class="col-6">
                         <label for="">State</label>
-                        <input name="state" [(ngModel)]="clientObj.state" type="text" class="form-control" />
+                        <input name="state" required [(ngModel)]="clientObj.state" type="text" class="form-control" />
                     </div>
                     <div class="col-6">
                         <label for="">Employee Strength</label>
@@ -101,7 +101,7 @@
                         <button class="btn btn-secondary" (click)="handleResetClient()">Reset</button>
                     </div>
                     <div class="col-6 text-center">
-                        <button class="btn btn-success" [disabled]= (click)="handleSaveClient()">
+                        <button class="btn btn-success" [disabled]="!form.valid" (click)="handleSaveClient()">
                             {{clientObj.clientId === 0 ? 'Save Client': 'Update Client' }}
                         </button>
                     </div>

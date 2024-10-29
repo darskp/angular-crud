@@ -1,0 +1,108 @@
+<div class="row mx-2">
+    <div class="col-8">
+        <div class="card">
+            <div class="card-header bg-success text-white">
+                Client List
+            </div>
+            <div class="card-body">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Sl. No.</th>
+                            <th scope="col">Company Name</th>
+                            <th scope="col">Person Name</th>
+                            <th scope="col">Contact</th>
+                            <th scope="col">City</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                       
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="col-4">
+        <div class="card">
+            <div class="card-header bg-success text-white">
+                New Client
+            </div>
+            <div class="card-body">
+                <form #form="ngForm">
+                    <div class="row">
+                        <div class="col-6">
+                            <label for="">Client Project Id</label>
+                            <input name="clientProjectId" required [(ngModel)]="clientObj.clientProjectId"
+                                type="text" class="form-control" />
+                        </div>
+                        <div class="col-6">
+                            <label for="">Project Name</label>
+                            <input name="projectName" required [(ngModel)]="clientObj.projectName" type="text" class="form-control" />
+                        </div>
+                        <div class="col-6">
+                            <label for="">Start Date</label>
+                            <input name="startDate" required [(ngModel)]="clientObj.startDate" type="text" class="form-control" />
+                        </div>
+                        <div class="col-6">
+                            <label for="">Expected End Date</label>
+                            <input name="expectedEndDate" required [(ngModel)]="clientObj.expectedEndDate" type="text" class="form-control" />
+                        </div>
+                        <div class="col-6">
+                            <label for="">Lead By Emp Id</label>
+                            <input name="leadByEmpId" required [(ngModel)]="clientObj.leadByEmpId" type="text" class="form-control" />
+                        </div>
+                        <div class="col-6">
+                            <label for="">Completed Date</label>
+                            <input name="completedDate" required [(ngModel)]="clientObj.completedDate" type="text" class="form-control" />
+                        </div>
+                        <div class="col-6">
+                            <label for="">Contact Person</label>
+                            <input name="contactPerson" required [(ngModel)]="clientObj.contactPerson" type="text" class="form-control" />
+                        </div>
+                        <div class="col-6">
+                            <label for="">Contact Person Contact No</label>
+                            <input name="contactPersonContactNo" required [(ngModel)]="clientObj.contactPersonContactNo" type="text" class="form-control" />
+                        </div>
+                        <div class="col-6">
+                            <label for="">Total Emp Working</label>
+                            <input name="totalEmpWorking" required [(ngModel)]="clientObj.totalEmpWorking" type="text"
+                                class="form-control" />
+                        </div>
+                        <div class="col-6">
+                            <label for="">Project Cost</label>
+                            <input name="projectCost" required [(ngModel)]="clientObj.projectCost" type="text" class="form-control" />
+                        </div>
+                        <div class="col-6">
+                            <label for="">Project Details</label>
+                            <input name="projectDetails" required [(ngModel)]="clientObj.projectDetails" type="text" class="form-control" />
+                        </div>
+                        <div class="col-6">
+                            <label for="">Contact Person Email Id</label>
+                            <input name="contactPersonEmailId" required [(ngModel)]="clientObj.contactPersonEmailId" type="text" class="form-control" />
+                        </div>
+                        <div class="col-6">
+                            <label for="">Client Id</label>
+                            <input name="clientId" required [(ngModel)]="clientObj.clientId" type="text" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="row mt-4">
+                        <div class="col-6 text-center">
+                            <button class="btn btn-secondary" 
+                            (click)="handleResetClient()"
+                            >Reset</button>
+                        </div>
+                        <div class="col-6 text-center">
+                            <button class="btn btn-success" [disabled]="!form.valid" 
+                            (click)="handleResetClient()"
+                            >
+                                {{clientObj.clientId === 0 ? 'Save Client': 'Update Client' }}
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

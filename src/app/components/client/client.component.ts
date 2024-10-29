@@ -3,7 +3,6 @@ import { Client } from '../../model/class/client';
 import { FormsModule } from '@angular/forms';
 import { ClientService } from '../../../services/client.service';
 import { CommonModule } from '@angular/common';
-import { apiResponseModel } from '../../model/interface/role';
 
 @Component({
   selector: 'app-client',
