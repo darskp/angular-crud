@@ -1,0 +1,113 @@
+<div class="row mx-2">
+    <div class="col-8">
+        <div class="card">
+            <div class="card-header bg-success text-white">
+                Client List
+            </div>
+            <div class="card-body">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Sl. No.</th>
+                            <th scope="col">Company Name</th>
+                            <th scope="col">Person Name</th>
+                            <th scope="col">Contact</th>
+                            <th scope="col">City</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <ng-container *ngIf="getData.isLoader; else clientRows">
+                            <tr>
+                                <td colspan="5" style="text-align: center;">
+                                    loading....
+                                </td>
+                            </tr>
+                        </ng-container>
+                        <ng-template #clientRows>
+                            <tr *ngFor="let item of getData.clientList; let i = index">
+                                <td>{{ i+1 }}</td>
+                                <td>{{ item?.companyName }}</td>
+                                <td>{{ item?.contactPersonName }}</td>
+                                <td>{{ item?.contactNo }}</td>
+                                <td>{{ item?.city }}</td>
+                                <td><button class="btn btn-primary btn-sm me-2 " (click)="handleEdit(item)">
+                                        Edit
+                                    </button>
+                                    <button class="btn btn-danger btn-sm" (click)="handleDelete(item.clientId)">
+                                        Delete
+                                    </button>
+                                </td>
+                            </tr>
+                        </ng-template>
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="col-4">
+        <div class="card">
+            <div class="card-header bg-success text-white">
+                New Client
+            </div>
+            <div class="card-body">
+             <form #form="ngForm">
+                <div class="row">
+                    <div class="col-6">
+                        <label for="">Person Name</label>
+                        <input name="contactPersonName" [(ngModel)]="clientObj.contactPersonName" type="text" class="form-control" />
+                    </div>
+                    <div class="col-6">
+                        <label for="">Company Name</label>
+                        <input name="companyName" [(ngModel)]="clientObj.companyName" type="text" class="form-control" />
+                    </div>
+                    <div class="col-6">
+                        <label for="">Address</label>
+                        <input name="address" [(ngModel)]="clientObj.address" type="text" class="form-control" />
+                    </div>
+                    <div class="col-6">
+                        <label for="">City</label>
+                        <input name="city" [(ngModel)]="clientObj.city" type="text" class="form-control" />
+                    </div>
+                    <div class="col-6">
+                        <label for="">Pincode</label>
+                        <input name="pincode" [(ngModel)]="clientObj.pincode" type="text" class="form-control" />
+                    </div>
+                    <div class="col-6">
+                        <label for="">State</label>
+                        <input name="state" [(ngModel)]="clientObj.state" type="text" class="form-control" />
+                    </div>
+                    <div class="col-6">
+                        <label for="">Employee Strength</label>
+                        <input name="EmployeeStrength" [(ngModel)]="clientObj.EmployeeStrength" type="text" class="form-control" />
+                    </div>
+                    <div class="col-6">
+                        <label for="">Gst No</label>
+                        <input name="gstno" type="text" [(ngModel)]="clientObj.gstNo" class="form-control" />
+                    </div>
+                    <div class="col-6">
+                        <label for="">ContactNo</label>
+                        <input name="EmployeeStrength" [(ngModel)]="clientObj.contactNo" type="text" class="form-control" />
+                    </div>
+                    <div class="col-6">
+                        <label for="">RegNo</label>
+                        <input name="RegNo" type="text" [(ngModel)]="clientObj.regNo" class="form-control" />
+                    </div>
+                
+                </div>
+                <div class="row mt-4">
+                    <div class="col-6 text-center">
+                        <button class="btn btn-secondary" (click)="handleResetClient()">Reset</button>
+                    </div>
+                    <div class="col-6 text-center">
+                        <button class="btn btn-success" [disabled]= (click)="handleSaveClient()">
+                            {{clientObj.clientId === 0 ? 'Save Client': 'Update Client' }}
+                        </button>
+                    </div>
+                </div>
+             </form>
+            </div>
+        </div>
+    </div>
+</div>

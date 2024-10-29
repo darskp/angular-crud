@@ -1,0 +1,21 @@
+<p>designation works!</p>
+<p>Component Name: {{compName}}</p>
+<div class="row border border-1 border-danger">
+
+    @if (isLoader) {
+    <div class="spinner-border m-5" role="status">
+    </div>
+    } @else {
+    @for (item of designationList; track $index) {
+    <div class="col-3">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">{{item.designation}}</h4>
+                <a href="#" class="card-link">Edit</a>
+                <a href="#" class="card-link">Delete</a>
+            </div>
+        </div>
+    </div>
+    }
+    }
+</div>

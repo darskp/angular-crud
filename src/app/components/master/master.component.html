@@ -1,0 +1,76 @@
+<!-- <div class="row">
+  <h1 className="text-primary">Main App</h1>
+  <div class="col-3">
+    <p>{{title}}</p>
+  </div>
+  <div class="col-3">
+    <p>{{firstName}}</p>
+  </div>
+  <div class="col-3">
+    <p>{{currentDate}}</p>
+  </div>
+</div>
+<div class="row">
+  <div class="col-3">
+    <input class="form-control" [value]="firstName" type="text" />
+  </div>
+  <div class="col-3">
+    <input [type]="radioInputType" name="gender" />Male
+    <input [type]="radioInputType" name="gender" />Female
+  </div>
+  <div class="col-3">
+    <input class="form-control" [(ngModel)]="firstName" type="text" />
+  </div>
+</div>
+<div class="row mt-lg-3">
+  <div class="col-3">
+    <button class="btn btn-success" (click)="showAlert()">Alert</button>
+  </div>
+  <div class="col-3">
+    <button class="btn btn-dark" (click)="showMessage(firstName)">Message</button>
+  </div>
+</div>
+<hr>
+<hr> -->
+<h5 class="text-bg-success">{{activeTab}}</h5>
+
+<button (click)="changeTabName('roles')">Role</button>
+<button (click)="changeTabName('Designation')">Designation</button>
+
+<h2>App Role</h2>
+<h2>Role</h2>
+<div class="col-12" *ngIf="activeTab=='roles'">
+    <app-roles></app-roles>
+</div>
+<hr>
+<div class="col-12" *ngIf="activeTab=='Designation'">
+
+    <h2>Designation Role</h2>
+    <app-designation></app-designation>
+</div>
+<div>
+    <!-- <ul>
+  <li *ngFor="let item of userList">{{item.id}}. {{item.name}}</li>
+</ul>
+<div class="row mx-3">
+  <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Username</th>
+      <th scope="col">Email</th>
+      <th scope="col">Website</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of userList; let slNo=index">
+      <td>{{slNo+1}}</td>
+      <td>{{item?.name ?? "-"}} </td>
+      <td>{{item?.username ?? "-"}}</td>
+      <td>{{item.email ?? "-"}}</td>
+      <td>{{item.website ?? "-"}}</td>
+    </tr>
+  </tbody>
+</table>
+</div> -->
+</div>
