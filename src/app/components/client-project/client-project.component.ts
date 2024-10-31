@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
-import { ClientProject } from '../../model/class/client-project';
+import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { ClientService } from '../../../services/client.service';
+import { Client } from '../../model/class/client';
 
 @Component({
   selector: 'app-client-project',
@@ -10,13 +11,6 @@ import { CommonModule } from '@angular/common';
   templateUrl: './client-project.component.html',
   styleUrl: './client-project.component.css'
 })
-export class ClientProjectComponent {
-  constructor(private clientProject: ClientProject){
-
-  }
-  clientObj: ClientProject = new ClientProject();
-
-  handleResetClient(){
-    console.log("exe");
-  }
+export class ClientProjectComponent{
+ 
 }
