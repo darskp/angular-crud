@@ -15,15 +15,21 @@ export class ClientService {
 
   }
 
-  fetchGetClient():Observable<Client>{
-    return this.http.get<Client>(`${environment.API_URL}/GetAllClients`)
+  fetchGetClient(): Observable<apiResponseModel>{
+    return this.http.get<apiResponseModel>(`${environment.API_URL}/GetAllClients`)
   }
 
-  addUpdateClient(obj:Client): Observable<Client> {
-    return this.http.post<Client>(`${environment.API_URL}/AddUpdateClient`,obj)
+  fetchGetEmployee(): Observable<apiResponseModel> {
+    return this.http.get<apiResponseModel>(`${environment.API_URL}/GetAllEmployee`)
   }
 
-  deleteClientId(clientId:number): Observable<Client> {
-    return this.http.delete<Client>(`${environment.API_URL}/DeleteClientByClientId?=${clientId}`)
+  addUpdateClient(obj: Client): Observable<apiResponseModel> {
+    return this.http.post<apiResponseModel>(`${environment.API_URL}/AddUpdateClient`,obj)
   }
+
+  deleteClientId(clientId: number): Observable<apiResponseModel> {
+    return this.http.delete<apiResponseModel>(`${environment.API_URL}/DeleteClientByClientId?=${clientId}`)
+  }
+
+
 }

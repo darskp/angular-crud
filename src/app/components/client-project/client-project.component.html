@@ -17,7 +17,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                       
+
                     </tbody>
 
                 </table>
@@ -30,73 +30,89 @@
                 New Client
             </div>
             <div class="card-body">
-                <form> 
+                <form [formGroup]="projectForm">
                     <div class="row">
-                        <div class="col-6">
+                        <!-- <div class="col-6">
                             <label for="">Client Project Id</label>
                             <input name="clientProjectId" required 
-                                type="text" class="form-control" />
-                        </div>
+                                type="text" formControlName="projectName" class="form-control" />
+                        </div> -->
                         <div class="col-6">
                             <label for="">Project Name</label>
-                            <input name="projectName" required  type="text" class="form-control" />
+                            <input name="projectName" formControlName="projectName" required type="text"
+                                class="form-control" />
                         </div>
                         <div class="col-6">
                             <label for="">Start Date</label>
-                            <input name="startDate" required  type="text" class="form-control" />
+                            <input name="startDate" formControlName="startDate" required type="text"
+                                class="form-control" />
                         </div>
                         <div class="col-6">
                             <label for="">Expected End Date</label>
-                            <input name="expectedEndDate" required  type="text" class="form-control" />
+                            <input name="expectedEndDate" formControlName="expectedEndDate" required type="text"
+                                class="form-control" />
                         </div>
                         <div class="col-6">
-                            <label for="">Lead By Emp Id</label>
-                            <input name="leadByEmpId" required  type="text" class="form-control" />
+                            <label for="">Lead By</label>
+                            <select  class="form-control" formControlName="leadByEmpId">
+                                <option value="">Select Employee</option>
+                                @for(item of getEmployeeData.data;track $index){
+                                <option [value]="item.empId">{{item.empName}} - {{item.empCode}}</option>
+                                }
+                            </select>
                         </div>
                         <div class="col-6">
                             <label for="">Completed Date</label>
-                            <input name="completedDate" required  type="text" class="form-control" />
+                            <input name="completedDate" formControlName="completedDate" required type="text"
+                                class="form-control" />
                         </div>
                         <div class="col-6">
                             <label for="">Contact Person</label>
-                            <input name="contactPerson" required type="text" class="form-control" />
+                            <input name="contactPerson" formControlName="contactPerson" required type="text"
+                                class="form-control" />
                         </div>
                         <div class="col-6">
                             <label for="">Contact Person Contact No</label>
-                            <input name="contactPersonContactNo" required type="text" class="form-control" />
+                            <input name="contactPersonContactNo" formControlName="contactPersonContactNo" required
+                                type="text" class="form-control" />
                         </div>
                         <div class="col-6">
                             <label for="">Total Emp Working</label>
-                            <input name="totalEmpWorking" required type="text"
+                            <input name="totalEmpWorking" formControlName="totalEmpWorking" required type="text"
                                 class="form-control" />
                         </div>
                         <div class="col-6">
                             <label for="">Project Cost</label>
-                            <input name="projectCost" required type="text" class="form-control" />
+                            <input name="projectCost" formControlName="projectCost" required type="text"
+                                class="form-control" />
                         </div>
                         <div class="col-6">
                             <label for="">Project Details</label>
-                            <input name="projectDetails" required type="text" class="form-control" />
+                            <input name="projectDetails" formControlName="projectDetails" required type="text"
+                                class="form-control" />
                         </div>
                         <div class="col-6">
                             <label for="">Contact Person Email Id</label>
-                            <input name="contactPersonEmailId" required type="text" class="form-control" />
+                            <input name="contactPersonEmailId" formControlName="contactPersonEmailId" required
+                                type="text" class="form-control" />
                         </div>
                         <div class="col-6">
-                            <label for="">Client Id</label>
-                            <input name="clientId" required type="text" class="form-control" />
+                            <label for="">Select Client</label>
+                            <select class="form-control" formControlName="clientId">
+                                <option value="">Select Client</option>
+                                @for(item of getClientList.data;track $index){
+                                <option [value]="item.clientId">{{item.companyName}}</option>
+                                }
+                            </select>
                         </div>
                     </div>
                     <div class="row mt-4">
                         <div class="col-6 text-center">
-                            <button class="btn btn-secondary" 
-                           
-                            >Reset</button>
+                            <button class="btn btn-secondary">Reset</button>
                         </div>
                         <div class="col-6 text-center">
-                            <button class="btn btn-success"                           
-                            >
-                               Save Client
+                            <button class="btn btn-success">
+                                Save Client
                             </button>
                         </div>
                     </div>
