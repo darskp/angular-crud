@@ -1,8 +1,24 @@
+<p>{{clientObj | json}}</p>
+<ul>
+    @for (item of userList$ | async; track $index) {
+    <li>{{item?.username || "test"| uppercase}}</li>
+    }
+</ul>
+<app-alert [alertMsg]="'This is a warning!'" [alertType]="'warning'"></app-alert>
+<app-alert [alertMsg]="'This is an error!'" [alertType]="'danger'"></app-alert>
+<app-alert [alertMsg]="'This is an info message.'" [alertType]="'info'"></app-alert>
+
 <div class="row mx-2">
     <div class="col-8">
         <div class="card">
             <div class="card-header bg-success text-white">
-                Client List
+                Client List - {{currentDate | date}} - 
+            </div>
+            <div>
+               <span>
+                {{firstName()}}
+               </span>
+               <button class="btn btn-danger" (click)="changeFirstName()">Change FName</button>
             </div>
             <div class="card-body">
                 <table class="table">
@@ -27,7 +43,7 @@
                         <ng-template #clientRows>
                             <tr *ngFor="let item of getData.clientList; let i = index">
                                 <td>{{ i+1 }}</td>
-                                <td>{{ item?.companyName }}</td>
+                                <td>{{ item?.companyName || "" | uppercase }} </td>
                                 <td>{{ item?.contactPersonName }}</td>
                                 <td>{{ item?.contactNo }}</td>
                                 <td>{{ item?.city }}</td>
@@ -93,21 +109,19 @@
                     <div class="col-6">
                         <label for="">RegNo</label>
                         <input name="RegNo" type="text" [(ngModel)]="clientObj.regNo" class="form-control" />
-                    </div>
-                
+                    </div>      
                 </div>
                 <div class="row mt-4">
                     <div class="col-6 text-center">
                         <button class="btn btn-secondary" (click)="handleResetClient()">Reset</button>
                     </div>
                     <div class="col-6 text-center">
-                        <button class="btn btn-success" [disabled]="!form.valid" (click)="handleSaveClient()">
-                            {{clientObj.clientId === 0 ? 'Save Client': 'Update Client' }}
-                        </button>
+                        <app-mybtn [btnText]="clientObj.clientId === 0 ? 'Save Client': 'Update Client'" [btnType]="'success'" [disabled]="!form.valid" (onBtnClick)="handleSaveClient($event)"
+                        ></app-mybtn>
                     </div>
                 </div>
-             </form>
-            </div>
+            </form>
         </div>
     </div>
+</div>
 </div>

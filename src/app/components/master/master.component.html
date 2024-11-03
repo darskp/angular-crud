@@ -32,6 +32,17 @@
 </div>
 <hr>
 <hr> -->
+<input [type]="myType" [value]="userSelectedValue" [placeholder]="myPlaceholder" />
+
+<input [type]="myType" [(ngModel)]="userSelectedValue" placeholder="this is ngmodel textbox" />
+
+<select (change)="selectedValue($event)">
+  <option value="">select</option>
+  <option value="t1">t1</option>
+  <option value="t2">t2</option>
+  <option value="t3">t3</option>
+</select>
+<p>{{userSelectedValue || "please type"}}</p>
 <h5 class="text-bg-success">{{activeTab}}</h5>
 
 <button (click)="changeTabName('roles')">Role</button>
@@ -40,16 +51,16 @@
 <h2>App Role</h2>
 <h2>Role</h2>
 <div class="col-12" *ngIf="activeTab=='roles'">
-    <app-roles></app-roles>
+  <app-roles></app-roles>
 </div>
 <hr>
 <div class="col-12" *ngIf="activeTab=='Designation'">
 
-    <h2>Designation Role</h2>
-    <app-designation></app-designation>
+  <h2>Designation Role</h2>
+  <app-designation></app-designation>
 </div>
 <div>
-    <!-- <ul>
+  <!-- <ul>
   <li *ngFor="let item of userList">{{item.id}}. {{item.name}}</li>
 </ul>
 <div class="row mx-3">
@@ -73,4 +84,20 @@
   </tbody>
 </table>
 </div> -->
+</div>
+
+<div class="row">
+  <div class="col-3 bg-primary">
+   @if (showDiv) {
+   <p>show</p>
+  }@else{
+  <p>Hide</p>
+  }
+  </div>
+</div>
+<div class="row">
+  <div class="col-3 mt-2 text-center">
+    <button (click)="toggleDiv(true)" class="btn btn-success">Show</button>
+    <button (click)="toggleDiv(false)" class="btn btn-danger">Hide</button>
+  </div>
 </div>

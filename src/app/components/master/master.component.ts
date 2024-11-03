@@ -42,6 +42,21 @@ export class MasterComponent implements OnInit{
   //   console.log("msg", message);
   //   alert(`Message - ${message}`)
   // }
+  showDiv:boolean=true;
+
+  toggleDiv(value:boolean){
+    this.showDiv = value;
+  }
+
+userSelectedValue:string="";
+
+  selectedValue(event:any){
+    this.userSelectedValue=event?.target.value;
+    console.log(event?.target.value);
+  }
+
+  myType:string="text";
+  myPlaceholder:string="your custom placeholder here"
 
   activeTab: string = "roles";
   changeTabName(newTabName: string) {
