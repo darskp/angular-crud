@@ -1,1 +1,38 @@
 <p>employee works!</p>
+
+<div class="row">
+    <div class="col-12">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Username</th>
+                    <th>Email</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (userList.length > 0) {
+                @for(user of userList;track $index){
+                <tr>
+                    <td>{{user.id}}</td>
+                    <td>{{user.name | uppercase}}</td>
+                    <td>{{user.username}}</td>
+                    <td>{{user.email}}</td>
+                </tr>
+                }}@else {
+                <div class="text-center">
+                    <p>No Data</p>
+                </div>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+@if (userList.length===0) {
+<div class="row">
+    <div class="col-12 text-center">
+        <button class="btn btn-success" (click)="getUsers()">Get User</button>
+    </div>
+</div>
+}

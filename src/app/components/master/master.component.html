@@ -88,11 +88,11 @@
 
 <div class="row">
   <div class="col-3 bg-primary">
-   @if (showDiv) {
-   <p>show</p>
-  }@else{
-  <p>Hide</p>
-  }
+    @if (showDiv) {
+    <p>show</p>
+    }@else{
+    <p>Hide</p>
+    }
   </div>
 </div>
 <div class="row">
@@ -100,4 +100,11 @@
     <button (click)="toggleDiv(true)" class="btn btn-success">Show</button>
     <button (click)="toggleDiv(false)" class="btn btn-danger">Hide</button>
   </div>
+</div>
+<div class="row">
+  <ul>
+    @for (item of cities; track $index) {
+    <li [ngStyle]="{'backgroundColor': (item==='c2' || item==='c3') ? 'red':'yellow'}">{{item }}-{{$index}}</li>
+    }
+  </ul>
 </div>

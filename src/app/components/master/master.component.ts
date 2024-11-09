@@ -48,6 +48,10 @@ export class MasterComponent implements OnInit{
     this.showDiv = value;
   }
 
+  cities:any[]=[
+    'c1','c2','c3'
+  ]
+
 userSelectedValue:string="";
 
   selectedValue(event:any){
