@@ -1,1 +1,23 @@
-<p>testd works!</p>
+<div class="row">
+    <div class="col-6 bg-success text-white py-4 text-center">
+       <p>Hi Nice to meet you! I'm {{myName}}</p>
+       <button class="btn btn-secondary" (click)="handleOnclick()">Click</button>
+    </div>
+    <div class="col-6 bg-dark text-white py-4 text-center">
+        <p>user name - {{userName || "type"}}</p>
+        <input class="form-control " [(ngModel)]="userName"/>
+        <button class="btn btn-success" (click)="handleClearUsername()">Clear</button>
+    </div>
+</div>
+<div class="row">
+    <div class="col-6 bg-dark text-white py-4 text-center">
+        <p>{{isBtnHidden===false ? "My Name is Darshan" : ""}}</p>
+        <button *ngIf="isBtnHidden===true" class="btn btn-secondary" (click)="handlebtnOnclick()">Show</button>
+        <button *ngIf="isBtnHidden===false" class="btn btn-secondary" (click)="handlebtnOnclick()">Hide</button>
+    </div>
+    <div class="col-6 bg-success text-white py-4 text-center py-4">
+        <div *ngFor="let i of numbers">
+            <p>{{i}}</p>
+        </div>
+    </div>
+</div>
