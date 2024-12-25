@@ -1,23 +1,106 @@
-<div class="row">
-    <div class="col-6 bg-success text-white py-4 text-center">
-       <p>Hi Nice to meet you! I'm {{myName}}</p>
-       <button class="btn btn-secondary" (click)="handleOnclick()">Click</button>
+<!-- Task 1
+Create 2 Radio Button for male & female
+If male selected Show "You Have selected Male"
+If feMale selected Show "You Have selected Female"
+Male
+Female -->
+<div class="container">
+    <div class="mt-2 row flex justify-content-center align-items-center">
+        <div class="card col-6 bg-dark text-white p-4 rounded-1">
+            <p>Please select your gender</p>
+
+            <div *ngFor="let option of gender" class="form-check mt-2">
+                <input type="radio" class="form-check-input" [id]="option.gender" name="gender"
+                    [(ngModel)]="selectedGender" [value]="option.gender">
+                <label class="form-check-label" [for]="option.gender">
+                    {{ option.gender }}
+                </label>
+            </div>
+
+            <br>
+            <p *ngIf="selectedGender">You have selected - {{ selectedGender }}</p>
+        </div>
     </div>
-    <div class="col-6 bg-dark text-white py-4 text-center">
-        <p>user name - {{userName || "type"}}</p>
-        <input class="form-control " [(ngModel)]="userName"/>
-        <button class="btn btn-success" (click)="handleClearUsername()">Clear</button>
+    <!-- Task 2
+Show Product Category in 3 Div
+On click of div - store selected category in a variable
+show selected Companies of selected category -->
+    <div class="mt-2 row flex justify-content-center align-items-center">
+        <div class="card col-6 bg-dark text-white p-4 rounded-1">
+            <div style="grid-template-columns: repeat(auto-fill, minmax(150px,1fr))" class="d-grid gap-2">
+                <div *ngFor="let category of allProd; let index = index" class="text-center p-2 rounded-1" [ngClass]="{
+                        'bg-success': index === 0,
+                        'bg-secondary': index === 1,
+                        'bg-danger': index >= 2
+                    }" (click)="selectCategory(category)" style="cursor: pointer;">
+                    {{ category | truncatePipe:10 }}
+                </div>
+            </div>
+            <div class="text-center mt-2">
+                <p *ngIf="selectedProdName" class="m-0 p-0">
+                    Selected Category: <strong>{{ selectedProdName }}</strong>
+                </p>
+                <p *ngIf="selectedProdName" class="pt-0 m-0">
+                    Companies: {{ product[selectedProdName].join(', ') }}
+                </p>
+            </div>
+        </div>
     </div>
-</div>
-<div class="row">
-    <div class="col-6 bg-dark text-white py-4 text-center">
-        <p>{{isBtnHidden===false ? "My Name is Darshan" : ""}}</p>
-        <button *ngIf="isBtnHidden===true" class="btn btn-secondary" (click)="handlebtnOnclick()">Show</button>
-        <button *ngIf="isBtnHidden===false" class="btn btn-secondary" (click)="handlebtnOnclick()">Hide</button>
-    </div>
-    <div class="col-6 bg-success text-white py-4 text-center py-4">
-        <div *ngFor="let i of numbers">
-            <p>{{i}}</p>
+
+    <!-- Task 3
+    show hide div1 on click of show & hide button
+    show hide div2 on click of toggle button
+    if we enter same value in both textbox hide div3 else show -->
+    <div class="cardmain mt-2 row flex justify-content-center align-items-center hov">
+        <div class="card col-6 text-white p-4 rounded-1">
+            <div class="row">
+                <div style="grid-template-columns: repeat(auto-fill, minmax(150px,1fr))" class="d-grid gap-2">
+                    <div *ngFor="let category of ['Div 1',' Div 2','Div 3']; let index = index">
+                        <div class="text-center p-2 rounded-1" [ngClass]="{
+                                        'bg-success': index === 0,
+                                        'bg-secondary': index === 1,
+                                        'bg-primary': index == 2,
+                                        'invisible':hasHideDiv1 && index===0 || hasHideDiv2 && index===1 || number1===number2 && index===2 && number1!=''
+                                    }" (click)="selectCategory(category)" style="cursor: pointer;">
+                            {{ category | truncatePipe:10 }}
+                        </div>
+                        <div class="mt-4" *ngIf="index === 0">
+                            <div class="d-flex justify-content-center align-items-center">
+                                <button *ngFor="let btnname of ['show', 'hide']; let btnIndex = index"
+                                    class="btn mx-2 col-auto btn-sm text-white" [ngClass]="{
+                                        'bg-success': btnIndex === 0,
+                                        'bg-danger': btnIndex === 1
+                                }" (click)="onChangeToggleDiv1(btnname)">
+                                    {{ btnname }}
+                                </button>
+                            </div>
+                        </div>
+                        <div class="mt-4" *ngIf="index === 1">
+                            <div class="d-flex justify-content-center align-items-center">
+                                <button class="btn mx-2 col-auto btn-sm text-white btn-success"
+                                    (click)="onChangeToggleDiv2()">
+                                    Show / Hide
+                                </button>
+                            </div>
+                        </div>
+                        <div class="mt-4" *ngIf="index === 2">
+                            <div class="d-flex justify-content-center align-items-center row p-0 m-0">
+                                <input type="text" class="col-6 form" id="div 3 input" name="div 3" [(ngModel)]="number1"
+                                    [value]="number1">
+                                <input type="text" class="col-6 form" id="div 3 input" name="div 3" [(ngModel)]="number2"
+                                    [value]="number2">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
+
+<!-- <ul>
+    <li class="nav-item">
+        <a class="nav-link" routerLink="/testd/getapi" routerLinkActive="active">testd getapi</a>
+    </li>
+    <router-outlet />
+</ul> -->

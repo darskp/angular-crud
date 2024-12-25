@@ -13,7 +13,7 @@
 // app.routes.ts
 // [{
 //     *   path: 'parent',
-//     *   component: ParentComponent,
+//     *   component: ParentComponent, 
 //     *   children: [{
 //      *     path: 'list',
 //         *     component: ListComponent

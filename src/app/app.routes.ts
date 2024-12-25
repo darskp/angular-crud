@@ -4,6 +4,7 @@ import { EmployeeComponent } from './components/employee/employee.component';
 import { ClientComponent } from './components/client/client.component';
 import { ClientProjectComponent } from './components/client-project/client-project.component';
 import { TestdComponent } from './components/testd/testd.component';
+import { GetapiComponent } from './components/getapi/getapi.component';
 
 export const routes: Routes = [
     {
@@ -23,13 +24,17 @@ export const routes: Routes = [
         path: 'employee',
         component: EmployeeComponent
     },
-     {
+    {
         path: 'client',
         component: ClientComponent
     },
     {
         path: 'testd',
-        component: TestdComponent
+        component: TestdComponent,
+        children: [{
+            path: 'getapi',
+            component: GetapiComponent
+        } ],
     },
-   
+
 ];
